@@ -106,6 +106,7 @@ class ProjectInput {
       value: enteredTitle,
       required: true,
     };
+
     const descriptionValidatable: Validatable = {
       value: enteredDescription,
       required: true,
