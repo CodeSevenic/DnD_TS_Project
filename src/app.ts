@@ -13,6 +13,8 @@ class ProjectState {
   }
 }
 
+const projectState = new ProjectState();
+
 // Validation
 interface Validatable {
   value: string | number;
