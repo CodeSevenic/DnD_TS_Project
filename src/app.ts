@@ -61,7 +61,7 @@ function autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
 }
 
 // ProjectList Class
-class projectList {
+class ProjectList {
   templateElement: HTMLTemplateElement;
   hostElement: HTMLTemplateElement;
   element: HTMLElement;
@@ -192,3 +192,5 @@ class ProjectInput {
 }
 
 const prjInput = new ProjectInput();
+const activePrjList = new ProjectList('active');
+const finishedPrjList = new ProjectList('finished');
