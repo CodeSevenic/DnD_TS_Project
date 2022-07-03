@@ -9,6 +9,7 @@ class ProjectState {
       description: description,
       people: numOfPeople,
     };
+    this.projects.push(newProject);
   }
 }
 
