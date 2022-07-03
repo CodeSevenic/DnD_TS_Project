@@ -13,7 +13,7 @@ class ProjectState {
     return this.instance;
   }
 
-  addProject(title: string, description: string, numOfPeople: string) {
+  addProject(title: string, description: string, numOfPeople: number) {
     const newProject = {
       id: Math.random().toString(),
       title: title,
