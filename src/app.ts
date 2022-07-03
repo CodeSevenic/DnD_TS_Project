@@ -60,6 +60,27 @@ function autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
   return adjdescriptor;
 }
 
+// ProjectList Class
+class projectList {
+  templateElement: HTMLTemplateElement;
+  hostElement: HTMLTemplateElement;
+  element: HTMLElement;
+
+  constructor(private type: 'active' | 'finished') {
+    this.templateElement = document.getElementById(
+      'project-list'
+    )! as HTMLTemplateElement;
+    this.hostElement = document.getElementById('app')! as HTMLTemplateElement;
+
+    const importedNode = document.importNode(
+      this.templateElement.content,
+      true
+    );
+    this.element = importedNode.firstElementChild as HTMLElement;
+    this.element.id = `${this.type}-input`;
+  }
+}
+
 //  ProjectInput Class
 class ProjectInput {
   templateElement: HTMLTemplateElement;
