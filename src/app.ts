@@ -80,6 +80,7 @@ class projectList {
     this.element.id = `${this.type}-projects`;
 
     this.attach();
+    this.renderContent();
   }
 
   private renderContent() {
