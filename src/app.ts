@@ -143,7 +143,7 @@ class ProjectList {
   }
 
   private renderProjects() {
-    const listEl = document.getElementById(
+    // const listEl = document.getElementById(
       `${this.type}-projects-list`
     )! as HTMLUListElement;
     for (const prjItem of this.assignedProjects) {
