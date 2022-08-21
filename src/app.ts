@@ -161,7 +161,7 @@ class ProjectList {
   }
 
   private attach() {
-    // this.hostElement.insertAdjacentElement('beforeend', this.element);
+    this.hostElement.insertAdjacentElement('beforeend', this.element);
   }
 }
 
