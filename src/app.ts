@@ -1,3 +1,22 @@
+// Validation
+interface Validation {
+  value: string | number;
+  required?: boolean;
+  minLength?: number;
+  maxLength?: number;
+  min?: number;
+  max?: number;
+}
+
+function validate(validateInput: Validation) {
+  let isValid = true;
+  if (validateInput.required) {
+    isValid = isValid && validateInput.value.toString().trim().length !== 0;
+  }
+
+  return isValid;
+}
+
 // autoBind decorator
 function autoBind(_: any, _2: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
@@ -56,14 +75,20 @@ class ProjectInput {
     }
   }
 
+  private clearInput() {
+    this.titleInputElement.value = '';
+    this.descriptionInputElement.value = '';
+    this.peopleInputElement.value = '';
+  }
+
   @autoBind
   private submitHandler(event: Event) {
     event.preventDefault();
-    console.log(this.titleInputElement.value);
     const userInput = this.gatherUserInput();
     if (Array.isArray(userInput)) {
       const [title, desc, people] = userInput;
       console.log(title, desc, people);
+      this.clearInput();
     }
   }
 
