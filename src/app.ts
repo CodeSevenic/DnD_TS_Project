@@ -15,19 +15,19 @@ function validate(validateInput: Validation) {
   }
 
   if (validateInput.minLength != null && typeof validateInput.value === 'string') {
-    isValid = isValid && validateInput.value.length > validateInput.minLength;
+    isValid = isValid && validateInput.value.length >= validateInput.minLength;
   }
 
   if (validateInput.maxLength != null && typeof validateInput.value === 'string') {
-    isValid = isValid && validateInput.value.length < validateInput.maxLength;
+    isValid = isValid && validateInput.value.length <= validateInput.maxLength;
   }
 
   if (validateInput.min != null && typeof validateInput.value === 'number') {
-    isValid = isValid && validateInput.value > validateInput.min;
+    isValid = isValid && validateInput.value >= validateInput.min;
   }
 
   if (validateInput.max != null && typeof validateInput.value === 'number') {
-    isValid = isValid && validateInput.value < validateInput.max;
+    isValid = isValid && validateInput.value <= validateInput.max;
   }
 
   return isValid;
@@ -79,11 +79,25 @@ class ProjectInput {
     const enteredDescription = this.descriptionInputElement.value;
     const enteredPeople = this.peopleInputElement.value;
 
-    if (
-      enteredTitle.trim().length === 0 ||
-      enteredDescription.trim().length === 0 ||
-      enteredPeople.trim().length === 0
-    ) {
+    const titleValidate: Validation = {
+      value: enteredTitle,
+      required: true,
+    };
+
+    const descriptionValidate: Validation = {
+      value: enteredDescription,
+      required: true,
+      minLength: 5,
+    };
+
+    const peopleValidate: Validation = {
+      value: +enteredPeople,
+      required: true,
+      min: 1,
+      max: 5,
+    };
+
+    if (!validate(titleValidate) || !validate(descriptionValidate) || !validate(peopleValidate)) {
       alert('Invalid input, please try again!');
       return;
     } else {
