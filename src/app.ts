@@ -60,7 +60,17 @@ class ProjectList {
     const importedNode = document.importNode(this.templateElement.content, true);
 
     this.element = importedNode.firstElementChild as HTMLElement;
-    this.element.id = 'user-input';
+    this.element.id = `${this.type}-projects`;
+    this.attach();
+  }
+
+  private renderContent() {
+    const listId = `${this.type}-project-list`;
+    this.element.querySelector('ul')!.id = listId;
+  }
+
+  private attach() {
+    this.hostElement.insertAdjacentElement('beforeend', this.element);
   }
 }
 
