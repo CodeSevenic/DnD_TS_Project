@@ -1,3 +1,7 @@
+// autoBind decorator
+function autoBind(target: any, methodName: string, descriptor: PropertyDescriptor) {}
+
+// ProjectInput Class
 class ProjectInput {
   templateElement: HTMLTemplateElement;
   hostElement: HTMLDivElement;
@@ -20,7 +24,17 @@ class ProjectInput {
     this.descriptionInputElement = this.element.querySelector('#description') as HTMLInputElement;
     this.peopleInputElement = this.element.querySelector('#people') as HTMLInputElement;
 
+    this.configure();
     this.attach();
+  }
+
+  private submitHandler(event: Event) {
+    event.preventDefault();
+    console.log(this.titleInputElement.value);
+  }
+
+  private configure() {
+    this.element.addEventListener('submit', this.submitHandler);
   }
 
   private attach() {
