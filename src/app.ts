@@ -62,6 +62,7 @@ class ProjectList {
     this.element = importedNode.firstElementChild as HTMLElement;
     this.element.id = `${this.type}-projects`;
     this.attach();
+    this.renderContent();
   }
 
   private renderContent() {
