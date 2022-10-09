@@ -1,6 +1,19 @@
 // Project State Management
 class ProjectState {
   private projects: any[] = [];
+  private static instance: ProjectState;
+
+  private constructor() {}
+
+  // Guarantees that we always get the same object
+  static getInstance() {
+    if (this.instance) {
+      return this.instance;
+    } else {
+      this.instance = new ProjectState();
+      return this.instance;
+    }
+  }
 
   addProject(title: string, description: string, numOfPeople: number) {
     const newProject = {
@@ -12,6 +25,8 @@ class ProjectState {
     this.projects.push(newProject);
   }
 }
+
+const projectState = ProjectState.getInstance();
 
 // Validation
 interface Validation {
@@ -162,6 +177,7 @@ class ProjectInput {
     if (Array.isArray(userInput)) {
       const [title, desc, people] = userInput;
       console.log(title, desc, people);
+      projectState.addProject(title, desc, people);
       this.clearInput();
     }
   }
