@@ -1,5 +1,8 @@
 // Drag & Drop Interfaces
-interface Draggable {}
+interface Draggable {
+  dragStartHandler(event: DragEvent): void;
+  dragEndHandler(event: DragEvent): void;
+}
 
 // Project Type
 enum ProjectStatus {
