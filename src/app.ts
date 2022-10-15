@@ -177,6 +177,7 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> implements 
     this.renderContent();
   }
 
+  @autoBind
   dragStartHandler(event: DragEvent): void {}
 
   dragEndHandler(event: DragEvent): void {}
