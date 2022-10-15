@@ -181,7 +181,9 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> implements 
 
   dragEndHandler(event: DragEvent): void {}
 
-  configure(): void {}
+  configure(): void {
+    this.element.addEventListener('dragstart', this.dragStartHandler);
+  }
 
   renderContent(): void {
     this.element.querySelector('h2')!.textContent = this.project.title;
