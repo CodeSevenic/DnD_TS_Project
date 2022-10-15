@@ -4,6 +4,8 @@ interface Draggable {
   dragEndHandler(event: DragEvent): void;
 }
 
+interface DragTarget {}
+
 // Project Type
 enum ProjectStatus {
   Active,
