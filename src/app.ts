@@ -183,6 +183,7 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> implements 
 
   configure(): void {
     this.element.addEventListener('dragstart', this.dragStartHandler);
+    this.element.addEventListener('dragend', this.dragEndHandler);
   }
 
   renderContent(): void {
