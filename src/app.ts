@@ -170,7 +170,7 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> implements 
   }
 
   constructor(hostId: string, project: Project) {
-    super('single-project', hostId, false, project.id);
+    // super('single-project', hostId, false, project.id);
     this.project = project;
 
     this.configure();
