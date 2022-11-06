@@ -179,7 +179,8 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> implements 
 
   @autoBind
   dragStartHandler(event: DragEvent): void {
-    console.log(event);
+    event.dataTransfer!.setData('text/pain', this.project.id);
+    event.dataTransfer!.effectAllowed = 'move';
   }
 
   dragEndHandler(_: DragEvent): void {
@@ -211,12 +212,13 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> implements Drag
   }
 
   @autoBind
-  dragOverHandler(_: DragEvent): void {
+  dragOverHandler(event: DragEvent): void {
     const listEl = this.element.querySelector('ul')!;
     listEl.classList.add('droppable');
   }
   @autoBind
   dropHandler(_: DragEvent): void {}
+
   @autoBind
   dragLeaveHandler(_: DragEvent): void {
     const listEl = this.element.querySelector('ul')!;
