@@ -210,6 +210,12 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> implements Drag
     this.renderContent();
   }
 
+  dragOverHandler(event: DragEvent): void {}
+
+  dropHandler(event: DragEvent): void {}
+
+  dragLeaveHandler(event: DragEvent): void {}
+
   configure(): void {
     projectState.addListener((projects: Project[]) => {
       const relevantProjects = projects.filter((project) => {
