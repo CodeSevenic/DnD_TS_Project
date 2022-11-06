@@ -63,7 +63,18 @@ class ProjectState extends State<Project> {
       ProjectStatus.Active
     );
     this.projects.push(newProject);
+    this.updateListeners();
+  }
 
+  moveProject(projectId: string, newStatus: ProjectStatus) {
+    const project = this.projects.find((prj) => prj.id === projectId);
+    if (project) {
+      project.status = newStatus;
+      this.updateListeners();
+    }
+  }
+
+  private updateListeners() {
     for (const listenerFn of this.listeners) {
       listenerFn(this.projects.slice());
     }
@@ -179,7 +190,7 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> implements 
 
   @autoBind
   dragStartHandler(event: DragEvent): void {
-    event.dataTransfer!.setData('text/pain', this.project.id);
+    event.dataTransfer!.setData('text/plain', this.project.id);
     event.dataTransfer!.effectAllowed = 'move';
   }
 
@@ -215,13 +226,15 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> implements Drag
   dragOverHandler(event: DragEvent): void {
     if (event.dataTransfer && event.dataTransfer.types[0] === 'text/plain') {
       event.preventDefault();
-
       const listEl = this.element.querySelector('ul')!;
       listEl.classList.add('droppable');
     }
   }
+
   @autoBind
-  dropHandler(_: DragEvent): void {}
+  dropHandler(event: DragEvent): void {
+    const prjId = console.log(event.dataTransfer!.getData('text/plain'));
+  }
 
   @autoBind
   dragLeaveHandler(_: DragEvent): void {
