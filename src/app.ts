@@ -233,7 +233,11 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> implements Drag
 
   @autoBind
   dropHandler(event: DragEvent): void {
-    const prjId = console.log(event.dataTransfer!.getData('text/plain'));
+    const prjId = event.dataTransfer!.getData('text/plain');
+    projectState.moveProject(
+      prjId,
+      this.type === 'active' ? ProjectStatus.Active : ProjectStatus.Finished
+    );
   }
 
   @autoBind
