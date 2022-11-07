@@ -1,8 +1,8 @@
-/// <reference path="drag-drop-interfaces.ts" />
-/// <reference path="project-model.ts" />
-/// <reference path="project-state.ts" />
-/// <reference path="validation.ts" />
-/// <reference path="autobind-decorator.ts" />
+/// <reference path="./models/drag-drop-interfaces.ts" />
+/// <reference path="./models/project-model.ts" />
+/// <reference path="./state/project-state.ts" />
+/// <reference path="./util/validation.ts" />
+/// <reference path="./decorators/autobind.ts" />
 
 namespace App {
   // Component Base Class
