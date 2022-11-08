@@ -5,8 +5,9 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: 'dist',
   },
-  mode: 'none',
+  mode: 'production',
   devtool: 'inline-source-map',
   module: {
     rules: [
